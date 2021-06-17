@@ -3,6 +3,7 @@ const cors = require('cors')
 const app = express()
 
 app.use(express.json())
+app.use(express.static('build'))
 app.use(cors())
 
 // morgan(function (persons, req, res) {
@@ -38,6 +39,10 @@ let persons = [
     }
 ]
 
+app
+    .get('/', (req, res) => {
+        res.send('hello word')
+    })
 app
     .get('/api/persons', (req, res) => {
         res.json(persons)
